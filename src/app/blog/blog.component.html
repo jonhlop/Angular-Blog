@@ -1,1 +1,65 @@
-<p>blog works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+  <div class="container">
+    <a class="navbar-brand">BLOG</a>
+    
+  
+
+    <select class="form-control" (change)="filtroCategoria($event)">
+      <option value="categorias">CATEGORIAS</option>
+      <option value="series">Series</option>
+      <option value="peliculas">Peliculas</option>
+      <option value="deportes">Deporte</option>
+      <option value="videojuegos">Videojuegos</option>
+    </select>
+
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/blog']">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-success nav-link" [routerLink]="['/new']">AGREGAR NUEVO POST</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container">
+  <div class="row" *ngFor="let post of posts">
+    <div class="col-lg-8">
+      <h1 class="mt-4">{{post.titulo}}</h1>
+      <p class="lead">CATEGORIA: {{post.categoria}}</p>
+
+      <p class="lead">{{post.autor}}</p>
+      <hr>
+
+      <p>{{post.fecha}}</p>
+      <hr>
+      <div [ngSwitch]="(post.categoria)">
+        <img src="https://e00-marca.uecdn.es/assets/multimedia/imagenes/2020/04/18/15872035944874.jpg"
+          *ngSwitchCase="'series'">
+        <img
+          src="https://www.lavanguardia.com/r/GODO/LV/p6/WebSite/2019/12/20/Recortada/img_astrid_20191223-145256_imagenes_lv_terceros_combopelis19-k3S-U472367896624VND-992x558@LaVanguardia-Web.jpg"
+          *ngSwitchCase="'peliculas'">
+        <img src="https://e00-marca.uecdn.es/assets/multimedia/imagenes/2016/01/12/14526225895787.jpg"
+          *ngSwitchCase="'deportes'">
+        <img src="https://www.qualitydevs.com/wp-content/uploads/2019/03/Evolucion-videojuegos-1288x724.jpg"
+          *ngSwitchCase="'videojuegos'">
+      </div>
+      <hr>
+
+      <p class="lead">{{post.texto}}</p>
+
+    </div>
+
+
+
+
+
+  </div>
+</div>
