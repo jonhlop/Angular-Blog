@@ -60,11 +60,10 @@ export class GestorService {
     console.log(post);
     var nuevoPost = post;
     this.arrPost.push(nuevoPost);
-    localStorage.setItem('arrLocalPost', JSON.stringify(this.arrPost));
+   
   }
   getAllPost(): Post[] {
-    this.arrPost =
-      JSON.parse(localStorage.getItem('arrLocalPost')) || this.arrPost;
+
     return this.arrPost;
   }
   getPostByCategoria(pCategoria): Promise<Post[]> {
