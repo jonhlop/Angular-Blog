@@ -1,4 +1,13 @@
-.error{
-    color: red;
+.error {
+  color: red;
 }
 
+.form-group .bn {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+}
+
+.form-group textarea {
+  border-top: none;
+}

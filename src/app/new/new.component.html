@@ -1,73 +1,90 @@
 <!-- formualario para crear nuevos post -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-    <div class="container">
-      <a class="navbar-brand" href="#">BLOG</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" [routerLink]="['/blog']">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="btn btn-outline-success nav-link" [routerLink]="['/BLOG']">Volver a BLOG</a>
-          </li>
-         
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <div class="container mt-5">
-    <form novalidate [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+  <div class="container">
+    <a class="navbar-brand" href="#">BLOG</a>
 
-        <div class="form-group col-6">
-            <label>Titulo</label>
-            <input type="text" formControlName="titulo" class="form-control">
-            <small class="form-text error" *ngIf="form.controls.titulo.errors?.required && form.controls.titulo.touched">
-                Rellena el titulo
-            </small>
-        </div>
-        <div class="form-group col-6">
-            <label>Autor</label>
-            <input type="text" formControlName="autor" class="form-control">
-            <small class="form-text error" *ngIf="form.controls.autor.errors?.required && form.controls.titulo.touched">
-                Rellea el autor
-            </small>
-        </div>
-        <div class="form-group col-6">
-            <label for="categoria">Categoria</label>
-            <select class="form-control col-4" id="categoria" formControlName="categoria" >
-                <option value="series">Series</option>
-                <option value="peliculas">Peliculas</option>
-                <option value="deportes">Deportes</option>
-                <option value="videojuegos">Videojuegos</option>
-            </select>
-            <small class="form-text error" *ngIf="form.controls.categoria.errors?.required && form.controls.categoria.touched">
-                Tienes que seleccionar una categoria
-            </small>
-           
-        </div>
-        <div class="form-group col-2">
-            <label>Fecha</label>
-            <input type="text" formControlName="fecha" class="form-control">
-            <small class="form-text error" *ngIf="form.controls.fecha.errors?.required && form.controls.fecha.touched">
-                Introduce una fecha (00-00-0000)
-            </small>
-        </div>
-        <div class="form-group col-6">
-            <label>Texto</label>
-            <textarea type="text" formControlName="texto" class="form-control"></textarea>
-            <small class="form-text error" *ngIf="form.controls.texto.errors?.required && form.controls.texto.touched">
-                Tienes que rellenar el campo texto
-            </small>
-        </div>
-    
-        <div class="form-group col-6 ">
-            <button type="submit" class="btn btn-success col-12" [disabled]="!form.valid">Enviar</button>
-        </div>
-        
-    </form>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/blog']">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-success nav-link" [routerLink]="['/BLOG']">Volver a BLOG</a>
+        </li>
+
+      </ul>
+    </div>
   </div>
+</nav>
+
+
+<div class="container ">
+  <div class="row">
+    <div class="col-8 mt-5 ">
+
+      <form novalidate [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+
+        <div class="form-group col-12">
+          <label>Titulo</label>
+          <input type="text" formControlName="titulo" class="form-control bn">
+          <small class="form-text error" *ngIf="form.controls.titulo.errors?.required && form.controls.titulo.touched">
+            Rellena el titulo
+          </small>
+        </div>
+        <div class="form-group col-12">
+          <label>Autor</label>
+          <input type="text" formControlName="autor" class="form-control bn">
+          <small class="form-text error" *ngIf="form.controls.autor.errors?.required && form.controls.autor.touched">
+            Rellea el autor
+          </small>
+        </div>
+        <div class="form-group col-12">
+          <label for="categoria">Categoria</label>
+          <select class="form-control col-4 bn" id="categoria" formControlName="categoria">
+            <option value="series">Series</option>
+            <option value="peliculas">Peliculas</option>
+            <option value="deportes">Deportes</option>
+            <option value="videojuegos">Videojuegos</option>
+          </select>
+          <small class="form-text error"
+            *ngIf="form.controls.categoria.errors?.required && form.controls.categoria.touched">
+            Tienes que seleccionar una categoria
+          </small>
+
+        </div>
+        <div class="form-group col-12">
+          <small class="form-text">
+              A fecha de {{fechaActual}}
+          </small>
+      </div>
+        <div class="form-group col-12">
+          <label>Texto</label>
+          <textarea type="text" formControlName="texto" class="form-control"></textarea>
+          <small class="form-text error" *ngIf="form.controls.texto.errors?.required && form.controls.texto.touched">
+            Tienes que rellenar el campo texto
+          </small>
+        </div>
+
+        <div class="form-group col-12 ">
+          <button type="submit" class="btn btn-success col-12" [disabled]="!form.valid">Enviar</button>
+        </div>
+
+      </form>
+    </div>
+    <div class="col-md-4 mt-5">
+
+      <div class="card my-4">
+        <h5 class="card-header">Consideraciones</h5>
+        <div class="card-body">
+          Puedes crear post de cualquier de las categorias seleccionas, se subira automaricamente en la pestaña:
+          <a class="btn btn-outline-success nav-link" [routerLink]="['/BLOG']">BLOG</a>
+          Recuerda que todos los campos son obligatorios.
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
